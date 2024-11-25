@@ -25,20 +25,30 @@ struct CryptoChartView: View {
                     
                     LineChart()
                 }
-                .background(Color("backgroundCard"))
+                .background(Color("backgroundColor1"))
             }
             .data(data)
             .chartStyle(ChartStyle(
                 backgroundColor: Color("backgroundCard"),
-                foregroundColor: ColorGradient(Color("valueCardDown").opacity(0.4), Color("valueCardDown"))
+                foregroundColor: ColorGradient(Color("valueCardUp").opacity(0.3), Color("valueCardUp").opacity(0.5))
             ))
             .frame(height: 300)
         }
     }
 }
 
-//struct CryptoChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CryptoChartView(data: data, title: title)
-//    }
-//}
+struct CryptoChartView_Previews: PreviewProvider {
+    static var data: [(String, Double)] = [
+        ("BTC", 50000.0),
+        ("ETH", 3000.0),
+        ("ADA", 1.2),
+        ("SOL", 200.0),
+        ("LTC", 150.0)
+    ]
+    
+    static var title = " "
+    
+    static var previews: some View {
+        CryptoChartView(data: data, title: title)
+    }
+}

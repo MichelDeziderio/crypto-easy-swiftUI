@@ -18,39 +18,40 @@ struct CryptoViewModal: View {
 
     var body: some View {
         
-        ZStack {
-            
-            VStack() {
-                
-                if !cryptoList.isEmpty {
+        ScrollView {
+            ZStack {
+                VStack() {
                     
-                    List(cryptoList) { crypto in
+                    if !cryptoList.isEmpty {
 
-                        CryptoView(crypto: crypto, selectedSymbol: crypto.symbol)
-                            .padding(.bottom)
+                        ForEach(cryptoList) { crypto in
+                            CryptoView(crypto: crypto)
+                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
+                                
+                            Spacer()
+                              .padding(.bottom, 5)
+
+                        }
                         
                     }
-                    .listStyle(.plain)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
                     
                 }
                 
             }
-        }
-        .ignoresSafeArea()
-        .padding([.top], 4)
+            .ignoresSafeArea()
+            .padding()
             
+        }
+        .background(Color("backgroundColor1"))
     }
 }
 
 struct CryptoViewModal_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-//            CryptoViewModal(cryptoList: previewListData)
-//            CryptoViewModal(cryptoList: previewListData)
-              ContentView()
-              ContentView()
+            CryptoViewModal(cryptoList: previewListData)
+            CryptoViewModal(cryptoList: previewListData)
                 .preferredColorScheme(.dark)
         }
     }

@@ -65,8 +65,6 @@ final class CryptoService: ObservableObject {
     }
     
     func filteredCryptos(for symbol: String) -> [Crypto] {
-        
-        print(symbol)
         return cryptos.filter { symbol == $0.symbol }
     }
 }
