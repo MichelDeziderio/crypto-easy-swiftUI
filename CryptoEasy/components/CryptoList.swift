@@ -52,9 +52,7 @@ struct cryptoList: View {
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
             .sheet(isPresented: $showModal) {
-                if let cryptoList = cryptoService.filteredCryptos(for: selectedSymbol) {
-                    CryptoViewModal(cryptoList: cryptoList)
-                }
+                CryptoViewModal(cryptoList: cryptoService.filteredCryptos(for: selectedSymbol))
             }
         
     }
