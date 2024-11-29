@@ -23,7 +23,6 @@ struct cryptoList: View {
                     Spacer()
                     
                     Button(action: {
-                        selectedSymbol
                         showModal = true
                     }){
                         Text("See All")
